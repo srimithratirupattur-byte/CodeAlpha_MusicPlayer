@@ -1,0 +1,322 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        linear-gradient(rgba(75, 35, 100, 0.12),
+                        rgba(75, 35, 100, 0.12)),
+        url("lavender-bg.jpg") center/cover fixed;
+    color: #68417f;
+}
+
+.player-container {
+    width: 380px;
+    max-width: 92%;
+    padding: 35px 28px;
+    text-align: center;
+    border-radius: 28px;
+    background: linear-gradient(135deg,rgba(238, 218, 248, 0.92),rgba(215, 190, 240, 0.88),rgba(245, 225, 250, 0.92));
+    background-size: 200% 200%;
+    animation: lavenderShift 8s ease infinite;
+    border: 2px solid rgba(255,255,255,0.7);
+    box-shadow: 0 15px 45px rgba(55, 20, 75, 0.3);
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+h1 {
+    font-size: 27px;
+    margin-bottom: 28px;
+    color: #75428e;
+}
+
+.album-art {
+    width: 100%;
+    height: 220px;
+    margin: 0 auto 22px;
+    border-radius: 20px;
+    background: rgba(205, 177, 225, 0.6);
+    border: 2px solid rgba(255,255,255,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.music-disc {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: repeating-radial-gradient(
+        circle, #68417f 0px, #68417f 4px,
+        #9875ac 5px, #4d315e 7px
+    );
+    border: 5px solid #cba8df;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    color: white;
+    box-shadow: 0 0 20px rgba(110, 60, 140, 0.3);
+    animation: rotateDisc 5s linear infinite;
+    animation-play-state: paused;
+}
+
+#cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 0 18px rgba(180, 130, 220, 0.65);
+    transition: transform 0.4s ease;
+}
+
+.song-info {
+    margin-bottom: 24px;
+}
+
+.song-info h2 {
+    color: #70428a;
+    text-shadow: 0 0 10px rgba(170, 120, 205, 0.45);
+    transition: all 0.3s ease;
+}
+
+.song-info p {
+    color: #896b9b;
+    margin-top: 8px;
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 25px;
+    font-size: 12px;
+}
+
+#progress {
+    flex: 1;
+    cursor: pointer;
+    accent-color: #9460b2;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    margin-bottom: 28px;
+}
+
+.controls button {
+    border: 1px solid #d5b7e5;
+    background: #ead8f3;
+    color: #81549b;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 19px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(100, 55, 130, 0.18);
+    transition: all 0.3s ease;
+}
+
+.controls button:hover {
+    background: #cda9e2;
+    transform: scale(1.1);
+}
+
+#play {
+    background: #b78bd3;
+    color: white;
+    width: 55px;
+    height: 55px;
+    box-shadow: 0 0 18px rgba(160, 100, 200, 0.6);
+    transition: all 0.3s ease;
+    animation: playGlow 2s ease-in-out infinite;
+}
+
+.volume-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#volume {
+    width: 110px;
+    accent-color: #9460b2;
+    cursor: pointer;
+}
+
+@keyframes rotateDisc {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@media (max-width: 480px) {
+    .player-container {
+        width: 92%;
+        padding: 25px 18px;
+    }
+
+    .album-art {
+        height: 190px;
+        box-shadow: 0 0 25px rgba(180, 130, 220, 0.35);
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
+.equalizer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    height: 35px;
+    margin-bottom: 20px;
+}
+
+.equalizer span {
+    width: 5px;
+    height: 10px;
+    background: #a875c8;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(168, 117, 200, 0.8);
+}
+.equalizer span:nth-child(1) {
+    animation: equalize 0.6s infinite alternate;
+}
+
+.equalizer span:nth-child(2) {
+    animation: equalize 0.8s infinite alternate;
+}
+
+.equalizer span:nth-child(3) {
+    animation: equalize 0.5s infinite alternate;
+}
+
+.equalizer span:nth-child(4) {
+    animation: equalize 0.7s infinite alternate;
+}
+
+.equalizer span:nth-child(5) {
+    animation: equalize 0.9s infinite alternate;
+}
+
+@keyframes equalize {
+    from {
+        height: 8px;
+    }
+    to {
+        height: 32px;
+    }
+}
+.equalizer:not(.playing) span {
+    animation: none;
+}
+.player-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 55px rgba(90, 45, 120, 0.4);
+}
+.playlist {
+    margin-top: 30px;
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    box-shadow: 0 5px 18px rgba(100, 55, 130, 0.12);
+}
+.playlist h3 {
+    color: #75428e;
+    margin-bottom: 15px;
+    font-size: 19px;
+}
+
+#playlist {
+    list-style: none;
+    padding: 0;
+}
+
+#playlist li {
+    padding: 12px;
+    margin-bottom: 8px;
+    background: rgba(225, 205, 240, 0.6);
+    border-radius: 12px;
+    color: #68417f;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#playlist li:hover {
+    background: #cda9e2;
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(120, 70, 155, 0.2);
+}
+
+#playlist li.active {
+    background: linear-gradient(135deg, #cda9e2, #b78bd3);
+    color: white;
+    box-shadow: 0 0 15px rgba(160, 100, 200, 0.45);
+    font-weight: bold;
+}
+
+@keyframes coverGlow {
+    0% {
+        box-shadow: 0 0 15px rgba(180, 130, 220, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 35px rgba(180, 130, 220, 0.9);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(180, 130, 220, 0.4);
+    }
+}
+
+#cover-image.playing {
+    animation: coverGlow 2s ease-in-out infinite;
+}
+
+#cover-image:hover {
+    transform: scale(1.08);
+}
+
+@keyframes playGlow {
+    0% {
+        box-shadow: 0 0 10px rgba(160, 100, 200, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(160, 100, 200, 0.9);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(160, 100, 200, 0.4);
+    }
+}
+
+@keyframes lavenderShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.footer {
+    margin-top: 22px;
+    color: #896b9b;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
